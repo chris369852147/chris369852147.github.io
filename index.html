@@ -36,13 +36,13 @@
     <div class="container"> <!-- container 在最外層 -->
          <div class="row">     <!-- row 在中間 -->
           <div class="col-md-4"></div> <!-- 這欄佔4格寬 -->
-           Name: <input type="text" /><br>
-           old: <input type="text" /><br>
+           Name: <input id="Name" type="text" /><br>
+           old: <input id="old" type="text" /><br>
            <button id="hello">hello</button><br>
            <script>
              $("#hello").on('click',function(){
-              alert("Hello"+old+"歲的"+Name)
-             })
+              alert("Hello "+$("#old").val()+"歲的"+$("#Name").val());
+             });
            </script>
            <p>play some games</p>
           <div class="col-md-6"></div> <!-- 這欄佔6格寬 -->
