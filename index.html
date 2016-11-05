@@ -38,10 +38,18 @@
           <div class="col-md-4"></div> <!-- 這欄佔4格寬 -->
            Name: <input id="Name" type="text" /><br>
            old: <input id="old" type="text" /><br>
+           <form>
+             <input id="like" type="radio" value="like">
+             <input id="unlike" type="radio" value="unlike">
+           </form>
            <button id="hello">hello</button><br>
            <script>
-             $("#hello").on('click',function(){
-              alert("Hello "+$("#old").val()+"歲的"+$("#Name").val());
+             $("#hello").on('click',"#hello",function(){
+              if($("#like").prop("checked")){
+              alert("Hello "+$("#old").val()+"歲的"+$("#Name").val()+",感謝你(妳)"+$("#like").val());
+              }else{
+               alert("你(妳)給我滾");
+              }
              });
            </script>
            <p>play some games</p>
