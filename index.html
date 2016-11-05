@@ -36,7 +36,14 @@
     <div class="container"> <!-- container 在最外層 -->
          <div class="row">     <!-- row 在中間 -->
           <div class="col-md-4"></div> <!-- 這欄佔4格寬 -->
-           
+           Name: <input type="text" /><br>
+           old: <input type="text" /><br>
+           <button id="hello">hello</button><br>
+           <script>
+             $("#hello").on('click',function(){
+              alert("Hello"+old+"歲的"+Name)
+             })
+           </script>
            <p>play some games</p>
           <div class="col-md-6"></div> <!-- 這欄佔6格寬 -->
            <img src="images/擷取.PNG">
