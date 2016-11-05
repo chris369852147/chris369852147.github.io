@@ -42,7 +42,7 @@
              <input id="unlike" type="radio" value="unlike" name="w">unlike
            <button id="hello">hello</button><br>
            <script>
-             $("#hello").on('click',"#hello",function(){
+             $("#hello").on('click',function(){
               if($("#like").prop("checked")){
               alert("Hello "+$("#old").val()+"歲的"+$("#Name").val()+",感謝你(妳)"+$("#like").val());
               }else{
