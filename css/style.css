@@ -1,6 +1,7 @@
 body{
- background-image:url("https://lh6.ggpht.com/XqEjNtXtS4LuWlfnmTnFZVOItHWkb1vtrs3WCT1UtJC2eqLyKqVixx9AYew0rz1pIJdQhT724hU=w140-h92-p");
- background-repeat:no-repeat;
- background-position:center center;
- background-size:cover;
- }
+	padding-top: 100px;
+    background-image:url("https://lh6.ggpht.com/XqEjNtXtS4LuWlfnmTnFZVOItHWkb1vtrs3WCT1UtJC2eqLyKqVixx9AYew0rz1pIJdQhT724hU=w140-h92-p");
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
+}
