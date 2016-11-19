@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <link href="css/bootstrap.css" rel="stylesheet">
+ <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
+ <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<title></title>
 	
 </head>
 <body>
+ <table class="table table-striped">
+ <thead>
+  <tr>
+   <td>id</td>
+   <td>姓名</td>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>1</td>
+   <td>Orange</td>
+   </tr>
+  </tbody>
+ </table>
 <script type="text/javascript" src="js/fdb-all.min.js"></script>
 <script type="text/javascript">
+
 	var fdb = new ForerunnerDB();
     var db = fdb.db("你的資料庫名稱");
     var studentCollection = db.collection('students');
+    
+    studentCollection.load();
+    $("students").append()
 </script>
 </body>
 </html>
