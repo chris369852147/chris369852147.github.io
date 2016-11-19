@@ -28,7 +28,7 @@
 	var fdb = new ForerunnerDB();
     var db = fdb.db("你的資料庫名稱");
     var studentCollection = db.collection('students');
-    
+    studentCollection.load();
    setTimeout(function(){
    	var students =studentCollection.find();
    	for (var i = 0; i < students.length; i++) {
