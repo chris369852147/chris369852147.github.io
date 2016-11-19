@@ -29,8 +29,14 @@
     var db = fdb.db("你的資料庫名稱");
     var studentCollection = db.collection('students');
     
-    studentCollection.load();
-    $("students").append()
+   setTimeout(function(){
+   	var students =studentCollection.find();
+   	for (var i = 0; i < students.length; i++) {
+   		var id = students[i]. _id;
+   		var name = students[i].name;
+   		$("students").append("<tr><td>"+id+"</td><td>"+name+"</td></tr>")
+   	};
+   },500);
 </script>
 </body>
 </html>
