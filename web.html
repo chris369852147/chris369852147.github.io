@@ -35,27 +35,20 @@
       </div>
       <div class="modal-body">
         <form>
-        <div class="form-group">
-            <label for="recipient-name" class="control-label">Set your own ID:</label>
-            <input type="text" class="form-control" id="recipient-name">
-        </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">Name:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="name">
           </div>
           <div class="form-group">
             <label for="message-text" class="control-label">Age:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="age">
           </div>
-          <div class="form-group">
-            <label for="message-text" class="control-label">Occupation:</label>
-            <input type="text" class="form-control" id="recipient-name">
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-primary" id="add">Add</button>
       </div>
     </div>
   </div>
@@ -99,6 +92,16 @@
    		$("#students").append("<tr><td>"+id+"</td><td>"+name+"</td></tr>")
    	};
    },500);
+   $("#add").click(function(){
+   	var aaaa={
+   		name:$("#name").val(),
+   		age:$("#age").val()
+   	};
+   	$("#name").val("");
+   	$("#age").val("");
+   	studentCollection.insert(aaaa);
+   	studentCollection.save();
+   });
 </script>
 </body>
 </html>
