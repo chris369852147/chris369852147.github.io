@@ -15,7 +15,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Data</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="data">
         <p>One fine body&hellip;</p>
       </div>
       <div class="modal-footer">
@@ -84,7 +84,7 @@
      	id:id
      })[0];
      console.log(student);
-     $(".modal-body").text("Age:"+student.age)
+     $("#data").text("Age:"+student.age)
      $("#mymodal").modal("show");
     }
     $("#students").on("click","tr",showModal);
