@@ -25,8 +25,8 @@
      </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
    </div><!-- /.modal -->
- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">add your data</button>
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+ <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add your data</button>
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" id="set">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -52,7 +52,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="add">Add</button>
+        <button type="button" class="btn btn-primary" id="save">Save</button>
       </div>
     </div>
   </div>
@@ -96,7 +96,7 @@
    		$("#students").append("<tr><td>"+id+"</td><td>"+name+"</td></tr>")
    	};
    },500);
-   $("#add").click(function(){
+   $("#save").click(function(){
    	var aaaa={
    		id:$("#data-id").val(),
    		name:$("#name").val(),
@@ -111,7 +111,9 @@
    	var aaa=studentCollection.find(aaaa)[0];
     $("#students").append("<tr><td>"+aaa.id+"</td><td>"+aaa.name+"</td></tr>")
    });
-   $("#Change").modal()
+   $("#Change").click(function(){
+   	$("#set").modal('show');
+   });
 </script>
 </body>
 </html>
