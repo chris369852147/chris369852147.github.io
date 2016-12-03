@@ -20,7 +20,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Change your data</button>
+        <button type="button" class="btn btn-primary" id="Change">Change your data</button>
       </div>
      </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -111,6 +111,7 @@
    	var aaa=studentCollection.find(aaaa)[0];
     $("#students").append("<tr><td>"+aaa.id+"</td><td>"+aaa.name+"</td></tr>")
    });
+   $("#Change").modal('show')
 </script>
 </body>
 </html>
