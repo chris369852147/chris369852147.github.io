@@ -147,8 +147,12 @@
    	$("#set").modal('show');
    });
    $("#Delete").click(function(){
-   	var aaa=$($(this).parents("tr").find("td")[0]);
-   	
+   	var aaa=$($(this).parents("tr").find("td")[0]).text();
+   	Collection.remove({
+   		id:aaa
+   	});
+    Collection.save();
+    $(this).remove();                    
    });
 </script>
 </body>
