@@ -104,7 +104,6 @@
  </table>
 <script type="text/javascript" src="js/fdb-all.min.js"></script>
 <script type="text/javascript">
-    var dataid=0
     var tr;
 	var fdb = new ForerunnerDB();
     var db = fdb.db("你的資料庫名稱");
@@ -113,7 +112,6 @@
     function showModal(){
     	tr = $(this)
      var id=$($(this).find("td")[0]).text();
-     dataid=id
      var student=studentCollection.find({
      	id:id
      })[0];
@@ -146,17 +144,41 @@
     $("#students").append("<tr><td>"+aaa.id+"</td><td>"+aaa.name+"</td></tr>")
    });
    $("#Change").click(function(){
+     var id=$($(tr).find("td")[0]).text();
+     var student=studentCollection.find({
+     	id:id
+     })[0];
    	$("#set").modal('show');
+   	$("#new-id").val(student.id);
+   	$("#new-name").val(student.name);
+   	$("#new-age").val(student.age);
    });
    $("#Delete").click(function(){
-   	var aaa=$($(this).parents("tr").find("td")[0]).text();
+   	var aaa=$(tr.find("td")[0]).text();
    	studentCollection.remove({
    		id:aaa
    	});
     studentCollection.save();
-    tr.remove();                    
+    tr.remove();
+    $("#set").modal('hide');
+    $("#mymodal").modal('hide');
    });
-   $("#changedata").click()
+   $("#changedata").click(function(){
+   	var id=$($(tr).find("td")[0]).text();
+    studentCollection.update({
+    	id
+    },{
+    	id:$("#new-id").val(),
+   		name:$("#new-name").val(),
+   		age:$("#new-age").val()
+    });
+    $("#new-id").val("");
+   	$("#new-name").val("");
+   	$("#new-age").val("");
+   	studentCollection.save();
+   	$("#set").modal('hide');
+   	$("#mymodal").modal('hide');
+   });
 </script>
 </body>
 </html>
