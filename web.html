@@ -148,10 +148,11 @@
    });
    $("#Delete").click(function(){
    	var aaa=$($(this).parents("tr").find("td")[0]).text();
-   	Collection.remove({
+   	console.log(aaa)
+   	studentCollection.remove({
    		id:aaa
    	});
-    Collection.save();
+    studentCollection.save();
     $(this).remove();                    
    });
 </script>
