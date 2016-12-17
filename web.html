@@ -25,7 +25,10 @@
      </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
    </div><!-- /.modal -->
- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add your data</button>
+ <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add your data</button><br>
+ age(gte): <input id="agegte" type="text" /><br>
+ age(lte): <input id="agelte" type="text" />
+ <button type="button" id="select">select</button>
  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -179,6 +182,29 @@
    	$("#set").modal('hide');
    	$("#mymodal").modal('hide');
    });
+   $("#select").click(function(){
+   	var gte=-1;
+   	var lte=-1;
+   	if ($("#agegte").val()!="") {
+   		gte=$("#agegte").val()/1;
+   	}
+   	if ($("#agelte").val()!="") {
+   		lte=$("#agelte").val()/1;
+   	}
+   	var students =studentCollection.find({
+   		age:{
+         $gte:gte,
+         $lte:lte
+   		}
+   	});
+   	console.log(students);
+   	$("#students tr").remove();
+   	for (var i = 0; i < students.length; i++) {
+   		var id = students[i]. id;
+   		var name = students[i].name;
+   		$("#students").append("<tr><td>"+id+"</td><td>"+name+"</td></tr>")
+   	};
+   })
 </script>
 </body>
 </html>
