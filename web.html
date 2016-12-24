@@ -26,8 +26,7 @@
     </div><!-- /.modal-dialog -->
    </div><!-- /.modal -->
  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add your data</button><br>
- age(gte): <input id="agegte" type="text" /><br>
- age(lte): <input id="agelte" type="text" />
+ <input id="junior" type="checkbox" value="like">介壽國中912<br>
  <button type="button" id="select">select</button>
  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
@@ -39,16 +38,16 @@
       <div class="modal-body">
         <form>
         <div class="form-group">
-            <label for="recipient-name" class="control-label">Set your own ID:</label>
+            <label for="recipient-name" class="control-label">ID:</label>
             <input type="text" class="form-control" id="data-id">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="control-label">Name:</label>
+            <label for="recipient-name" class="control-label">Name(中文/English):</label>
             <input type="text" class="form-control" id="name">
           </div>
           <div class="form-group">
-            <label for="message-text" class="control-label">Age:</label>
-            <input type="text" class="form-control" id="age">
+            <label for="messbirthday-text" class="control-label">birthday(西元年/月/日):</label>
+            <input type="text" class="form-control" id="birthday">
           </div>
           </div>
         </form>
@@ -70,16 +69,16 @@
     <div class="modal-body">
       <form>
        <div class="form-group">
-         <label for="recipient-name" class="control-label">New id</label>
+         <label for="recipient-name" class="control-label">New ID:</label>
          <input type="text" class="form-control" id="new-id">
         </div>
         <div class="form-group">
-         <label for="message-text" class="control-label">New name</label>
+         <label for="messbirthday-text" class="control-label">New name:</label>
          <input type="text" class="form-control" id="new-name">
         </div>
         <div class="form-group">
-         <label for="message-text" class="control-label">New age</label>
-         <input type="text" class="form-control" id="new-age">
+         <label for="messbirthday-text" class="control-label">New birthday:</label>
+         <input type="text" class="form-control" id="new-birthday">
         </div>
        </form>
       </div>
@@ -119,7 +118,7 @@
      	id:id
      })[0];
      console.log(student);
-     $("#data").text("Age:"+student.age)
+     $("#data").text("birthday:"+student.birthday)
      $("#mymodal").modal("show");
     }
     $("#students").on("click","tr",showModal);
@@ -135,11 +134,11 @@
    	var aaaa={
    		id:$("#data-id").val(),
    		name:$("#name").val(),
-   		age:$("#age").val()
+   		birthday:$("#birthday").val()
    	};
    	$("#data-id").val("");
    	$("#name").val("");
-   	$("#age").val("");
+   	$("#birthday").val("");
    	studentCollection.insert(aaaa);
    	studentCollection.save();
    	$("#exampleModal").modal('hide');
@@ -154,7 +153,7 @@
    	$("#set").modal('show');
    	$("#new-id").val(student.id);
    	$("#new-name").val(student.name);
-   	$("#new-age").val(student.age);
+   	$("#new-birthday").val(student.birthday);
    });
    $("#Delete").click(function(){
    	var aaa=$(tr.find("td")[0]).text();
@@ -173,38 +172,32 @@
     },{
     	id:$("#new-id").val(),
    		name:$("#new-name").val(),
-   		age:$("#new-age").val()
+   		birthday:$("#new-birthday").val()
     });
     $("#new-id").val("");
    	$("#new-name").val("");
-   	$("#new-age").val("");
+   	$("#new-birthday").val("");
    	studentCollection.save();
    	$("#set").modal('hide');
    	$("#mymodal").modal('hide');
    });
-   $("#select").click(function(){
-   	var gte=-1;
-   	var lte=-1;
-   	if ($("#agegte").val()!="") {
-   		gte=$("#agegte").val()/1;
+   $("#select").on('click',function(){
+   	if($("#junior").prop("checked")){
+   		var students=studentCollection.find({
+   			id:{
+   				$gte:10455168,
+   				$lte:10455184
+   			}
+   		});
    	}
-   	if ($("#agelte").val()!="") {
-   		lte=$("#agelte").val()/1;
-   	}
-   	var students =studentCollection.find({
-   		age:{
-         $gte:gte,
-         $lte:lte
-   		}
-   	});
-   	console.log(students);
+   	console.log(students)
    	$("#students tr").remove();
    	for (var i = 0; i < students.length; i++) {
    		var id = students[i]. id;
    		var name = students[i].name;
    		$("#students").append("<tr><td>"+id+"</td><td>"+name+"</td></tr>")
    	};
-   })
+   });
 </script>
 </body>
 </html>
