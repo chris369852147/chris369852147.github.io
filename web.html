@@ -26,8 +26,9 @@
     </div><!-- /.modal-dialog -->
    </div><!-- /.modal -->
  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add your data</button><br>
- <input id="junior" type="checkbox" value="like">介壽國中912<br>
- <button type="button" id="select">select</button>
+ <input id="elementary" type="radio" name="school">民權國小604
+ <input id="junior" type="radio" name="school">介壽國中912
+ <button type="button" id="search">search</button>
  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -97,10 +98,14 @@
    <td>NAME</td>
   </tr>
  </thead>
+ <tbody>
+  <tr>
+   <td>60404/91230</td>
+   <td>郭宸傑/Chris</td>
+  </tr>
+  </tbody>
  <tbody id="students">
   <tr>
-   <td>example</td>
-   <td>example</td>
   </tr>
   </tbody>
  </table>
@@ -181,12 +186,20 @@
    	$("#set").modal('hide');
    	$("#mymodal").modal('hide');
    });
-   $("#select").on('click',function(){
+   $("#search").on('click',function(){
+   	if($("#elementary").prop("checked")){
+   		var students=studentCollection.find({
+   			id:{
+   				$gte:60401,
+   				$lte:60432
+   			}
+   		});
+   	}
    	if($("#junior").prop("checked")){
    		var students=studentCollection.find({
    			id:{
-   				$gte:10455168,
-   				$lte:10455184
+   				$gte:91201,
+   				$lte:91237
    			}
    		});
    	}
